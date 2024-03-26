@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
 
     public TextMeshProUGUI stopwatchText;
     private float elapsedTime;
+    private bool isRunning = false;
 
 
     [SerializeField] private float moveSpeed = 10f;
@@ -152,7 +153,11 @@ public class PlayerMovement : MonoBehaviour
 
         UpdateAnimationState();
 
-        UpdateStopwatch();
+        
+        if (isRunning)
+        {
+            UpdateStopwatch();
+        }
 
 
     }
@@ -353,6 +358,13 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.CompareTag("Goal"))
+
+        {
+            SceneManager.LoadSceneAsync(2);
+            StopStopwatch();
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -367,6 +379,12 @@ public class PlayerMovement : MonoBehaviour
     void StartStopwatch()
     {
         elapsedTime = 0f;
+        isRunning = true;
+    }
+
+    void StopStopwatch()
+    {
+        isRunning = false;
     }
 
     void UpdateStopwatch()
