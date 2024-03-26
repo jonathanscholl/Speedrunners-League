@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-        if (Input.GetKeyDown(KeyCode.Q) && canDash)
+        if (Input.GetButtonDown("Dash") && canDash)
 
         {
             StartCoroutine(Dash());
