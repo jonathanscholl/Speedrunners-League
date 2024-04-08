@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
     {
 
 
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetButtonDown("Menu"))
 
         {
             SceneManager.LoadSceneAsync(0);
